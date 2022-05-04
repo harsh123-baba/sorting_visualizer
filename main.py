@@ -9,7 +9,7 @@ from tkinter import *
 import random
 root = tk.Tk();
 root.title("Sorting Visualizer");
-root.geometry("1020x600")
+root.geometry("1020x800")
 root.config(bg= "pink")
 
 
@@ -37,22 +37,22 @@ def genrate_array():
 
 
 def drawRectangle(arr, colorArray):
-    canvas.delete('all')
-    canvas_height = 300;
-    canvas_width = 600;
+    barWindow.delete('all')
+    canvas_height = 500;
+    canvas_width = 730;
     bar_width = canvas_width / (len(arr) + 1);
     border_offset = 30
     spacing = 10;
     normalized_array = [i / max(arr) for i in arr];
     for i, height in enumerate(normalized_array):
         x0 = i*bar_width + border_offset + spacing;
-        y0 = canvas_height -height * 340
+        y0 = canvas_height - height * 340
 
         x1 = (i+1) * bar_width + border_offset;
         y1 = canvas_height;
 
-        canvas.create_rectangle(x0, y0, x1, y1, fill = colorArray[i])
-        canvas.create_text(x0+2, y0, anchor=SW, text = str(arr[i]));
+        barWindow.create_rectangle(x0, y0, x1, y1, fill = colorArray[i])
+        barWindow.create_text(x0+2, y0, anchor=SW, text = str(arr[i]));
 
     root.update_idletasks()
 
@@ -84,8 +84,8 @@ def sorting():
 optionFrame = tk.Frame(root, width=900, height=300, bg='green')
 optionFrame.grid(row = 0, column= 0, padx=10 , pady=10);
 
-canvas = tk.Canvas(root, width=750, height=350, bg='grey')
-canvas.grid(row=1, column=0, padx=10, pady=5);
+barWindow = tk.Canvas(root, width=750, height=550, bg='grey')
+barWindow.grid(row=1, column=0, padx=10, pady=5);
 
 tk.Label(optionFrame, text="Algorithms options" ,).grid(row=0, column=0, padx=10, pady=10)
 
@@ -121,29 +121,49 @@ Button(optionFrame, text="Current Array", command=genrate_array, bg='blue',heigh
 # yha s code useless mann kr chlo
 
 import time;
-from Algorithms.quickSort import quickSort
 from random import randint
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2Tk
 import matplotlib.pyplot as plt
 from matplotlib.figure import Figure
 
 
-
-
+# algos 
+from Algorithms.quickSort import quickSort_Complex
+from Algorithms.bubbleSort import bubble_sort_Complex
+from Algorithms.heap_sort import heapSort_Complex
+from Algorithms.merge_sort import mergeSort_Complex
+# from Algorithms.insertion_sort import
+from Algorithms.selection_sort import selection_sort_Complex
 
 def plot():
         
-    list1 = [randint(0,1000) for i in range(20000)]
+    list1 = [randint(0,1000) for i in range(1000)]
     times = [];
 
-    for x in range(0,20001,100):
+    for x in range(0,1001,100):
         start_time = time.time()
-        list2 = quickSort(list1[:x], 0, x-1)
+
+        if(select_algorithm.get() == "Bubble Sort"):
+            list2 = bubble_sort_Complex(list1[:x]);
+
+        elif(select_algorithm.get() == "Quick Sort"):
+            list2 = quickSort_Complex(list1[:x], 0, x-1)
+        
+        elif select_algorithm.get() == "Heap Sort":
+            list2 = heapSort_Complex(list1[:x]);
+       
+        elif select_algorithm.get() == "Selection Sort":
+            list2 = selection_sort_Complex(list1[:x]);
+       
+        elif select_algorithm.get() == "Merge Sort":
+            list2 = mergeSort_Complex(list1[:x], 0, x-1);
+
+
         elapsed_time = time.time() - start_time
         times.append(elapsed_time)
 
     # print(times);
-    x=[i for i in range(0,20001,100)]
+    x=[i for i in range(0,1001,100)]
 
     figure1 = plt.Figure(figsize=(6,5), dpi=100)
     # plt.xlabel("No. of elements")
@@ -153,14 +173,13 @@ def plot():
 
 
     
-    # error handling 
-    canvas = FigureCanvasTkAgg(figure1,master = newWindow)  
+    canvas = FigureCanvasTkAgg(figure1,master = barWindow)  
     canvas.draw()
     # placing the canvas on the Tkinter window
     canvas.get_tk_widget().pack()
   
     # creating the Matplotlib toolbar
-    toolbar = NavigationToolbar2Tk(canvas,newWindow)
+    toolbar = NavigationToolbar2Tk(canvas,barWindow)
     toolbar.update()
   
     # placing the toolbar on the Tkinter window
@@ -171,16 +190,16 @@ def plot():
 
 
 
-def openNewWindow():
-    newWindow = Toplevel(root);
-    newWindow.title("Complexity Of "+select_algorithm.get());
-    newWindow.geometry("400x400")
-    plt_btn = Button(newWindow, text="Draw Graph", command= plot)
-    plt_btn.pack();
+# def openNewWindow():
+#     newWindow = Toplevel(root);
+#     newWindow.title("Complexity Of "+select_algorithm.get());
+#     newWindow.geometry("400x400")
+#     plt_btn = Button(newWindow, text="Draw Graph", command= plot)
+#     plt_btn.pack();
 
 
-btn = Button(optionFrame,text ="Complexity", command = openNewWindow)
-btn.grid(row=1, column=4, padx=5, pady=5)
+btn = Button(optionFrame,text ="Complexity", command = plot, height=5, bg='white')
+btn.grid(row = 0, column=4, padx=5, pady=5)
     
     # Label(newWindow, text ="This is a new window").pack()
 

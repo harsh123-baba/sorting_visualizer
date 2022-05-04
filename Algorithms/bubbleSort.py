@@ -1,6 +1,6 @@
 import time
 
-def bubble_sort(data):
+def bubble_sort_Complex(data):
     for i in range(len(data) -1):
         for j in range(len(data) -1 ):
             if(data[j] > data[j+1]):

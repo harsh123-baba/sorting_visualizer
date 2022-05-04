@@ -28,7 +28,7 @@ def partition(arr, low, high):
 # Function to do Quick sort
  
  
-def quickSort(arr, low, high):
+def quickSort_Complex(arr, low, high):
     if len(arr) == 1:
         return arr
     if low < high:
@@ -40,8 +40,8 @@ def quickSort(arr, low, high):
         # time.sleep(delay)
         # Separately sort elements before
         # partition and after partition
-        quickSort(arr, low, pi-1)
+        quickSort_Complex(arr, low, pi-1)
         # drawRectangle(arr, ['blue' if x == low + 1 else 'red' for x in range(len(arr))]);
         # time.sleep(delay)
-        quickSort(arr, pi+1, high);
+        quickSort_Complex(arr, pi+1, high);
     # drawRectangle(arr, ['blue' for x in range(len(arr))])
