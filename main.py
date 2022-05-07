@@ -137,10 +137,10 @@ from Algorithms.selection_sort import selection_sort_Complex
 
 def plot():
         
-    list1 = [randint(0,1000) for i in range(1000)]
+    list1 = [randint(0,2000) for i in range(1000)]
     times = [];
 
-    for x in range(0,1001,100):
+    for x in range(0,2001,100):
         start_time = time.time()
 
         if(select_algorithm.get() == "Bubble Sort"):
@@ -156,14 +156,14 @@ def plot():
             list2 = selection_sort_Complex(list1[:x]);
        
         elif select_algorithm.get() == "Merge Sort":
-            list2 = mergeSort_Complex(list1[:x], 0, x-1);
+            list2 = mergeSort_Complex(list1[:x]);
 
 
         elapsed_time = time.time() - start_time
         times.append(elapsed_time)
 
     # print(times);
-    x=[i for i in range(0,1001,100)]
+    x=[i for i in range(0,2001,100)]
 
     figure1 = plt.Figure(figsize=(6,5), dpi=100)
     # plt.xlabel("No. of elements")
