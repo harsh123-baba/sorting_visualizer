@@ -1,47 +1,54 @@
-import time
+# import time
 
-def partition(arr, low, high):
-    i = (low-1)         # index of smaller element
-    pivot = arr[high]     # pivot
+# def partition(arr, low, high):
+#     i = (low-1)         # index of smaller element
+#     pivot = arr[high]     # pivot
  
-    for j in range(low, high):
- 
-        # If current element is smaller than or
-        # equal to pivot
-        if arr[j] <= pivot:
- 
-            # increment index of smaller element
-            i = i+1
-            arr[i], arr[j] = arr[j], arr[i]
-            # drawRectangle(arr, ['blue' if x == low + 1 else 'red' for x in range(len(arr))]);
-            # time.sleep(delay)
+#     for j in range(low, high):
+#         if arr[j] <= pivot:
+
+#             i = i+1
+#             arr[i], arr[j] = arr[j], arr[i]
     
-    arr[i+1], arr[high] = arr[high], arr[i+1]
+#     arr[i+1], arr[high] = arr[high], arr[i+1]
 
-    return (i+1)
+#     return (i+1)
+
  
-# The main function that implements QuickSort
-# arr[] --> Array to be sorted,
-# low  --> Starting index,
-# high  --> Ending index
- 
-# Function to do Quick sort
- 
- 
-def quickSort_Complex(arr, low, high):
-    if len(arr) == 1:
+# def quickSort_Complex(arr, low, high):
+#     if len(arr) == 1:
+#         return arr
+#     if low < high:
+#         pi = partition(arr, low, high)
+
+#         quickSort_Complex(arr, low, pi-1)
+#         quickSort_Complex(arr, pi+1, high);
+
+def quickSort_Complex(arr):
+
+    elements = len(arr)
+    
+    #Base case
+    if elements < 2:
         return arr
-    if low < high:
- 
-        # pi is partitioning index, arr[p] is now
-        # at right place
-        pi = partition(arr, low, high)
-        # drawRectangle(arr, ['blue' if x == low + 1 else 'red' for x in range(len(arr))]);
-        # time.sleep(delay)
-        # Separately sort elements before
-        # partition and after partition
-        quickSort_Complex(arr, low, pi-1)
-        # drawRectangle(arr, ['blue' if x == low + 1 else 'red' for x in range(len(arr))]);
-        # time.sleep(delay)
-        quickSort_Complex(arr, pi+1, high);
-    # drawRectangle(arr, ['blue' for x in range(len(arr))])
+    
+    current_position = 0 #Position of the partitioning element
+
+    for i in range(1, elements): #Partitioning loop
+         if arr[i] <= arr[0]:
+              current_position += 1
+              temp = arr[i]
+              arr[i] = arr[current_position]
+              arr[current_position] = temp
+
+    temp = arr[0]
+    arr[0] = arr[current_position] 
+    arr[current_position] = temp #Brings pivot to it's appropriate position
+    
+    left = quickSort_Complex(arr[0:current_position]) #Sorts the elements to the left of pivot
+    right = quickSort_Complex(arr[current_position+1:elements]) #sorts the elements to the right of pivot
+
+    arr = left + [arr[current_position]] + right #Merging everything together
+    
+    return arr
+

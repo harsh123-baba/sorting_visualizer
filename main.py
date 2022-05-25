@@ -13,10 +13,6 @@ root.geometry("1020x800")
 root.config(bg= "pink")
 
 
-# # new window
-# newWindow = tk.Tk();
-# newWindow.geometry("400x400")
-
 
 
 select_algorithm = tk.StringVar()
@@ -147,7 +143,7 @@ def plot():
             list2 = bubble_sort_Complex(list1[:x]);
 
         elif(select_algorithm.get() == "Quick Sort"):
-            list2 = quickSort_Complex(list1[:x], 0, x-1)
+            list2 = quickSort_Complex(list1[:x])
         
         elif select_algorithm.get() == "Heap Sort":
             list2 = heapSort_Complex(list1[:x]);
