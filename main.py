@@ -87,7 +87,7 @@ tk.Label(optionFrame, text="Algorithms options" ,).grid(row=0, column=0, padx=10
 
 
 algorithmMenu = ttk.Combobox(optionFrame, textvariable=select_algorithm, width=10);
-algorithmMenu['values'] = ('Bubble Sort', 'Merge Sort', 'Heap Sort', 'Quick Sort', 'Selection Sort')
+algorithmMenu['values'] = ('Bubble Sort', 'Merge Sort', 'Heap Sort', 'Quick Sort', 'Selection Sort', )
 algorithmMenu.grid(row=0, column=1, padx=5, pady=5)
 algorithmMenu.current(0);
 
@@ -153,6 +153,7 @@ def plot():
        
         elif select_algorithm.get() == "Merge Sort":
             list2 = mergeSort_Complex(list1[:x]);
+        
 
 
         elapsed_time = time.time() - start_time
