@@ -9,8 +9,8 @@ from tkinter import *
 import random
 root = tk.Tk();
 root.title("Sorting Visualizer");
-root.geometry("1020x800")
-root.config(bg= "pink")
+root.geometry("960x750")
+root.config(bg= "#58595B")
 
 
 
@@ -29,7 +29,7 @@ def genrate_array():
     for i in range(size):
         arr.append(random.randrange(lowest, highest+1));
 
-    drawRectangle(arr,['red' for x in range(len(arr))]);
+    drawRectangle(arr,['#A7A9AC' for x in range(len(arr))]);
 
 
 def drawRectangle(arr, colorArray):
@@ -48,7 +48,7 @@ def drawRectangle(arr, colorArray):
         y1 = canvas_height;
 
         barWindow.create_rectangle(x0, y0, x1, y1, fill = colorArray[i])
-        barWindow.create_text(x0+2, y0, anchor=SW, text = str(arr[i]));
+        barWindow.create_text(x0+2, y0, anchor=SW, text = str(arr[i]), width=200);
 
     root.update_idletasks()
 
@@ -77,42 +77,42 @@ def sorting():
 #gui part
 
 
-optionFrame = tk.Frame(root, width=900, height=300, bg='green')
+optionFrame = tk.Frame(root, width=900, height=300, bg='white')
 optionFrame.grid(row = 0, column= 0, padx=10 , pady=10);
 
-barWindow = tk.Canvas(root, width=750, height=550, bg='grey')
+barWindow = tk.Canvas(root, width=750, height=550, bg='white')
 barWindow.grid(row=1, column=0, padx=10, pady=5);
 
-tk.Label(optionFrame, text="Algorithms options" ,).grid(row=0, column=0, padx=10, pady=10)
+tk.Label(optionFrame, text="Algorithms options" ,bg='white').grid(row=0, column=0, padx=10, pady=10)
 
 
-algorithmMenu = ttk.Combobox(optionFrame, textvariable=select_algorithm, width=10);
+algorithmMenu = ttk.Combobox(optionFrame, textvariable=select_algorithm, width=10, state = 'readonly');
 algorithmMenu['values'] = ('Bubble Sort', 'Merge Sort', 'Heap Sort', 'Quick Sort', 'Selection Sort', )
 algorithmMenu.grid(row=0, column=1, padx=5, pady=5)
 algorithmMenu.current(0);
 
 
-sort_speed = Scale(optionFrame, from_=0.1, to=2.0, length=180, digits=2, resolution=0.2, orient=HORIZONTAL, label='Sorting Speed');
+sort_speed = Scale(optionFrame, from_=0.1, to=2.0, length=180, digits=2, resolution=0.1, orient=HORIZONTAL, label='Sorting Speed',bg='white');
 sort_speed.grid(row=0, column=2, padx=10, pady=10);
 
 
 
-Button(optionFrame, text="Start Sorting", command=sorting, bg='red',height=5).grid(row=0, column=3, padx=5, pady=5)
+Button(optionFrame, text="Start Sorting", fg = "white", command=sorting, bg='#414042',height=5).grid(row=0, column=3, padx=5, pady=5)
 
-lowest_entry = Scale(optionFrame, from_=0, to=100, length=250, digits=1, resolution=0.2 , orient=HORIZONTAL , label='Lowest Entry');
+lowest_entry = Scale(optionFrame, from_=0, to=100, length=250, digits=1, resolution=0.2 , orient=HORIZONTAL , label='Lowest Entry', bg='white');
 lowest_entry.grid(row=1, column=0, padx=10, pady=10);
 
 
-highest_entry = Scale(optionFrame, from_=100, to=10000, length=250, digits=1, orient=HORIZONTAL, label="Highest Entry");
+highest_entry = Scale(optionFrame, from_=100, to=10000, length=250, digits=1, orient=HORIZONTAL, label="Highest Entry", bg = 'white');
 highest_entry.grid(row=1, column=1, padx=10, pady=10);
 
-size_entry = Scale(optionFrame, from_=10, to=100, length=180, digits = 1, orient=HORIZONTAL, label="Array Size");
+size_entry = Scale(optionFrame, from_=10, to=100, length=180, digits = 1, orient=HORIZONTAL, label="Array Size", bg = 'white');
 size_entry.grid(row=1, column=2, padx=10, pady=10)
 
 
 
 
-Button(optionFrame, text="Current Array", command=genrate_array, bg='blue',height=5).grid(row=1, column=3, padx=10, pady=10)
+Button(optionFrame, text="Current Array", fg='white', command=genrate_array, bg='#58595B',height=5).grid(row=1, column=3, padx=10, pady=10)
 
 # yha s code useless mann kr chlo
 
@@ -195,7 +195,7 @@ def plot():
 #     plt_btn.pack();
 
 
-btn = Button(optionFrame,text ="Complexity", command = plot, height=5, bg='white')
+btn = Button(optionFrame,text ="Complexity",fg = 'white', command = plot, height=5, bg='#58595B')
 btn.grid(row = 0, column=4, padx=5, pady=5)
     
     # Label(newWindow, text ="This is a new window").pack()

@@ -21,7 +21,7 @@ def heapify(arr, n, i, drawRectangle, delay):
     # Change root, if needed
     if largest != i:
         arr[i], arr[largest] = arr[largest], arr[i]  # swap
-        drawRectangle(arr, ['blue' if x == largest+1 else 'red' for x in range(len(arr))]);
+        drawRectangle(arr, ['blue' if x == largest+1 else '#A7A9AC' for x in range(len(arr))]);
         # Heapify the root.
         time.sleep(delay);
         heapify(arr, n, largest, drawRectangle, delay)
@@ -43,7 +43,7 @@ def heapSort(arr, drawRectangle, delay):
         # time.sleep(delay);
         heapify(arr, i, 0, drawRectangle, delay)
  
-    drawRectangle(arr, ['blue' for x in range(len(arr))]);
+    drawRectangle(arr, ['black' for x in range(len(arr))]);
 
 
 

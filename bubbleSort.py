@@ -7,7 +7,7 @@ def bubble_sort(data, drawRectangle, delay):
                 temp = data[j];
                 data[j] = data[j+1];
                 data[j+1] = temp;
-                drawRectangle(data, ['blue' if x == j+1 else 'red' for x in range(len(data))])
+                drawRectangle(data, ['blue' if x == j+1 else '#A7A9AC' for x in range(len(data))])
                 time.sleep(delay)
             
-    drawRectangle(data, ['blue' for x in range(len(data))])
+    drawRectangle(data, ['black' for x in range(len(data))])

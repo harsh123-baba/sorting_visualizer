@@ -13,7 +13,7 @@ def partition(arr, low, high, drawRectangle, delay):
             # increment index of smaller element
             i = i+1
             arr[i], arr[j] = arr[j], arr[i]
-            drawRectangle(arr, ['blue' if x == low + 1 else 'red' for x in range(len(arr))]);
+            drawRectangle(arr, ['blue' if x == low + 1 else '#A7A9AC' for x in range(len(arr))]);
             time.sleep(delay)
     
     arr[i+1], arr[high] = arr[high], arr[i+1]
@@ -36,12 +36,12 @@ def quickSort(arr, low, high, drawRectangle, delay):
         # pi is partitioning index, arr[p] is now
         # at right place
         pi = partition(arr, low, high, drawRectangle, delay)
-        drawRectangle(arr, ['blue' if x == low + 1 else 'red' for x in range(len(arr))]);
+        drawRectangle(arr, ['blue' if x == low + 1 else '#A7A9AC' for x in range(len(arr))]);
         time.sleep(delay)
         # Separately sort elements before
         # partition and after partition
         quickSort(arr, low, pi-1, drawRectangle, delay)
-        drawRectangle(arr, ['blue' if x == low + 1 else 'red' for x in range(len(arr))]);
+        drawRectangle(arr, ['blue' if x == low + 1 else '#A7A9AC' for x in range(len(arr))]);
         time.sleep(delay)
         quickSort(arr, pi+1, high, drawRectangle, delay);
-    drawRectangle(arr, ['blue' for x in range(len(arr))])
+    drawRectangle(arr, ['black' for x in range(len(arr))])

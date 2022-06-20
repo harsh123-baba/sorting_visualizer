@@ -57,21 +57,21 @@ def merge(arr, l, m, r, drawRectangle, delay):
             arr[k] = R[j]
             j += 1
         k += 1
-        drawRectangle(arr,[ 'blue' if x == l+1  else 'red' for x in range(len(arr))])
+        drawRectangle(arr,[ 'blue' if x == l+1  else '#A7A9AC' for x in range(len(arr))])
         time.sleep(delay)
    
     while i < n1:
         arr[k] = L[i]
         i += 1
         k += 1
-        drawRectangle(arr,[ 'blue' if x == l+1  else 'red' for x in range(len(arr))])
+        drawRectangle(arr,[ 'blue' if x == l+1  else '#A7A9AC' for x in range(len(arr))])
         time.sleep(delay)
     
     while j < n2:
         arr[k] = R[j]
         j += 1
         k += 1
-        drawRectangle(arr,[ 'blue' if x == l+1  else 'red' for x in range(len(arr))])
+        drawRectangle(arr,[ 'blue' if x == l+1  else '#A7A9AC' for x in range(len(arr))])
         time.sleep(delay)
  
  
@@ -80,16 +80,16 @@ def mergeSort(arr, l, r, drawRectangle, delay):
 
      
         m = l+(r-l)//2
-        drawRectangle(arr,[ 'blue' if x == l+1  else 'red' for x in range(len(arr))])
+        drawRectangle(arr,[ 'blue' if x == l+1  else '#A7A9AC' for x in range(len(arr))])
         time.sleep(delay)
         mergeSort(arr, l, m, drawRectangle, delay)
-        drawRectangle(arr,[ 'blue' if x == l+1  else 'red' for x in range(len(arr))])
+        drawRectangle(arr,[ 'blue' if x == l+1  else '#A7A9AC' for x in range(len(arr))])
         time.sleep(delay)
         
         mergeSort(arr, m+1, r, drawRectangle, delay)
-        drawRectangle(arr,[ 'blue' if x == l+1  else 'red' for x in range(len(arr))])
+        drawRectangle(arr,[ 'blue' if x == l+1  else '#A7A9AC' for x in range(len(arr))])
         time.sleep(delay)
         merge(arr, l, m, r,drawRectangle, delay)
-        drawRectangle(arr,[ 'blue' if x == l+1  else 'red' for x in range(len(arr))])
+        drawRectangle(arr,[ 'blue' if x == l+1  else '#A7A9AC' for x in range(len(arr))])
         time.sleep(delay)
-    drawRectangle(arr, ['blue' for x in range(len(arr))]);
+    drawRectangle(arr, ['black' for x in range(len(arr))]);
